@@ -1,0 +1,1 @@
+This is a model I developed and used to train a 10 class subset of the imagenet dataset. Unfortunately I can't host the dataset on this github repo, however, if you are interested in obtaining the training and test data feel free to send me an email sai3@njit.edu
