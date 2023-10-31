@@ -13,3 +13,5 @@ Ultimately I would like to get practice on other deep learning algorithms so I c
 model ready to run, however, I currently lack the computing power to train it.
 
 10/26/23 Update: Github reorg. This was from 2018, just added the link to the dataset.
+
+10/30/23 Update: Implemented MNIST from scratch and added it here instead of creating a new folder in the repo for it.
