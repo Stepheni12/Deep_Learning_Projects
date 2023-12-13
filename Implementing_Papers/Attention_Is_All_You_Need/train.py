@@ -112,9 +112,6 @@ for epoch in range(epochs):
 		src = src.to(device)
 		tgt = tgt.to(device)
 		labels = labels.to(torch.long).to(device)
-		print("src:", src)
-		print("tgt:", tgt)
-		print("label:", labels)
 
 		enc_self_mask, dec_self_mask, dec_cross_mask = create_masks(src, tgt, max_sequence_length)
 
@@ -126,7 +123,6 @@ for epoch in range(epochs):
 		logits = logits.view(-1,tgt_vocab_size)
 		labels = labels.view(-1)
 		loss = criterion(logits, labels)
-		print(loss.view(-1,20))
 		break
 		#model.zero_grad()
 		#loss.backward()

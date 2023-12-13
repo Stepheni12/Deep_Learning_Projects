@@ -9,7 +9,7 @@ class LeLightning(pl.LightningModule):
         self.lr = learning_rate
         self.loss_func = torch.nn.CrossEntropyLoss()
         self.sm = torch.nn.Softmax(dim=1)
-        self.accuracy = torchmetrics.Accuracy(task="multiclass", num_classes=num_classes, top_k=1)
+        self.accuracy = torchmetrics.Accuracy(task="multiclass", num_classes=num_classes)
 
         self.c1 = torch.nn.Conv2d(1, 6, 5)
         self.s2 = torch.nn.AvgPool2d(2, 2)
@@ -66,11 +66,3 @@ class LeLightning(pl.LightningModule):
 
     def configure_optimizers(self): # And schedulers
         return torch.optim.SGD(self.parameters(), lr=self.lr)
-
-
-    # Also going to define a bunch of other functions you can define with the lightning module
-    def training_epoch_end(self, outputs): #
-        pass
-
-    def training_step_end(self, outputs):
-        pass
