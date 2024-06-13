@@ -1,9 +1,11 @@
 # Collection of Deep Learning Projects
 
-### Brief Descriptions/Highlights
+### Highlights
 - Implementing Papers: Turning papers into working models
-- Car Object Detection: PyTorch object detection model
 - Disaster Tweets: Hugging Face word-embeddings, PyTorch model, and thorough model training diagnostics
+
+### Projects
+- Car Object Detection: PyTorch object detection model
 - Flappy Bird Bot: Keras CNN and python utility functions for creating training dataset from web-based game
 - Genre Classification: Hugging Face word-embeddings, PyTorch multi-label classification model, thorough model training diagnostics
 - MNIST: TensorFlow CNN and MLP models, training mnist from scratch using only numpy
