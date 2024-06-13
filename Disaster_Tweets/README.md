@@ -12,4 +12,4 @@ I've been implementing the general approach of Karpathy's 'Recipe for Training N
 
 I also developed a web application for this code. If you run the python file locally to obtain the trained model you can interact with the model through the web application and test the results you get for different tweets that you enter!
 
-![screenshot of web app](https://github.com/Stepheni12/Deep_Learning_Projects/blob/main/Disaster_Tweets/web_app.png?raw=true)
+![web app screenshot](https://github.com/Stepheni12/Deep_Learning_Projects/assets/26886046/51719188-e41c-4c9b-a862-e3c3b828edf2)
