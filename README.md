@@ -1,8 +1,9 @@
 # Collection of Deep Learning Projects
 
 ### Highlights
-- Implementing Papers: Turning papers into working models
+- Implementing Papers: Turning top-tier research papers into working models
 - Disaster Tweets: Hugging Face word-embeddings, PyTorch model, and thorough model training diagnostics
+- Read Aloud: Screenshot to Speech tool - hear how your writing sounds in your own voice
 
 ### Projects
 - Car Object Detection: PyTorch object detection model
