@@ -9,3 +9,7 @@ My approach was to utilize word-embeddings to get a vector representation of the
 The disaster_tweets.py file contains a straightforward solution with most of the extra stuff stripped out. However, the NLP_Natural_Disaster notebook contains a bit of data exploration as well as a good amount of model diagnostics and tests to get an idea of how effective the training runs were going. 
 
 I've been implementing the general approach of Karpathy's 'Recipe for Training Neural Networks' in an effort to improve my overall efficiency when solving these problems. So often the workflow when working on deep learning projects is all over the place and I want to be better about trying to avoid that and have a more steady workflow that's applicable to any future job/freelance situations.
+
+I also developed a web application for this code. If you run the python file locally to obtain the trained model you can interact with the model through the web application and test the results you get for different tweets that you enter!
+
+![screenshot of web app](https://github.com/Stepheni12/Deep_Learning_Projects/blob/main/Disaster_Tweets/web_app.png?raw=true)

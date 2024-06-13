@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Tweet Classifier</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif; /* Bubbly font */
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333333; /* Dark text color */
+        }
+
+        #container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Set a fixed width for the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333; /* Dark text color */
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        #tweetInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            resize: none; /* Disable resizing */
+            max-width: 100%; /* Ensure the textarea doesn't exceed the container width */
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50; /* Green button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .result-box {
+            background-color: #add8e6; /* Light blue result box */
+            color: #333333;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%; /* Adjust the width as needed */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin: 0; /* Remove default margin */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Disaster Tweet Classifier</h1>
+        <p>Enter a tweet below and click 'Classify' to determine if it indicates signs of a disaster.</p>
+        <br />
+        <form id="tweetForm">
+            <label for="tweet">Enter a Tweet:</label>
+            <textarea id="tweetInput" rows="4" maxlength="280" required></textarea>
+            <br>
+            <input type="submit" value="Classify">
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('tweetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            classifyTweet();
+        });
+
+        document.getElementById('tweetInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                classifyTweet();
+            }
+        });
+
+        function classifyTweet() {
+            var tweet = document.getElementById('tweetInput').value;
+
+            // Send tweet to Flask backend using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/classify', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = '<div class="result-box"><p>Original Tweet:</p><p>' + response.tweet + '</p></div><div class="result-box"><p>Classification:</p><p>' + response.prediction + '</p></div>';
+                } else {
+                    console.error('Error:', xhr.statusText);
+                }
+            };
+            xhr.send('tweet=' + encodeURIComponent(tweet));
+        }
+    </script>
+</body>
+</html>

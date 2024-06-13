@@ -148,12 +148,12 @@ def visualize_val(i, epochs, loss, dataloader):
 torch.manual_seed(4975)
 
 # Passing the list because I already have the embeddings generated locally
-#generate_or_load_embeddings(df = df, embeddings_lst = ["embeddings1.pt", "embeddings2.pt"])
-generate_or_load_embeddings(df = df, file_name = "embeddings1.pt")
+generate_or_load_embeddings(df = df, embeddings_lst = ["embeddings1.pt", "embeddings2.pt"])
+#generate_or_load_embeddings(df = df, file_name = "embeddings1.pt")
 
 # Uncomment whichever embedding you intend to use
-embedding_data = torch.tensor(np.vstack(df['embeddings1'].values), dtype=torch.float32)
-#embedding_data = torch.tensor(np.vstack(df['embeddings2'].values), dtype=torch.float32)
+#embedding_data = torch.tensor(np.vstack(df['embeddings1'].values), dtype=torch.float32)
+embedding_data = torch.tensor(np.vstack(df['embeddings2'].values), dtype=torch.float32)
 
 #combined_data = torch.cat((keyword_data.reshape(-1,1), embedding_data), axis=1)
 targets = torch.tensor(df['target'].values, dtype=torch.float32).reshape(-1,1)
@@ -319,6 +319,10 @@ for i in range(epochs):
 ###### Diagnostics cleanup ######
 # for handle in hook_handles:
 #     handle.remove()
+
+# Save model for deployment
+model_scripted = torch.jit.script(model)
+model_scripted.save('model.pth')
 
 ######################### Post-Training Evaluation #########################
 
